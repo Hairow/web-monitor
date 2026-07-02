@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Web Monitor - 页面监控助手",
   "version": "1.0.0",
-  "description": "定时刷新页面、获取列表新条目、下载附件并发送邮件通知",
+  "description": "定时刷新页面、获取列表新条目、发送邮件通知",
   "permissions": [
     "storage",
     "alarms",
@@ -31,8 +31,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_end"
     }
   ]
