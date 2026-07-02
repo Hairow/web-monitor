@@ -12,14 +12,24 @@
       box-sizing: border-box;
     }
 
+    html,
     body {
       width: 420px;
+      min-height: 600px;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: #f5f7fa;
       color: #333;
     }
 
     .container {
+      flex: 1;
       padding: 16px;
     }
 
@@ -256,7 +266,7 @@
     </div>
 
     <!-- 统计 -->
-    <div class="section">
+    <div class="section" style="display:flex;align-items:center;justify-content:space-between;">
       <div class="stats">
         <div class="stat-item">
           <div class="stat-value" id="statNew">0</div>
@@ -267,6 +277,8 @@
           <div class="stat-label">已发邮件</div>
         </div>
       </div>
+      <button class="btn btn-secondary" id="btnClear" style="font-size:11px;padding:3px 8px;white-space:nowrap;">🗑
+        清除</button>
     </div>
 
     <!-- 目标页面 -->
@@ -276,7 +288,6 @@
       <div class="btn-row">
         <button class="btn btn-outline" id="btnGetUrl" style="flex:1;">获取当前页面</button>
       </div>
-      <div class="help-text">请先在浏览器中打开需要监控的 Web 系统页面，然后点击上方按钮自动填入 URL。</div>
     </div>
 
     <!-- 基准时间 -->
@@ -292,26 +303,22 @@
     <div class="section">
       <div class="section-title">✉️ 邮件通知 (Resend)</div>
       <div class="form-group">
-        <label>Resend API Key</label>
+        <label>Resend API Key <a href="https://resend.com/api-keys" target="_blank">创建 API Key</a> </label>
         <input type="password" id="resendApiKey" placeholder="re_xxxxxxxxxxxx">
-        <div class="help-text">在 <a href="https://resend.com/api-keys" target="_blank">resend.com/api-keys</a> 创建 API
-          Key</div>
       </div>
       <div class="form-group">
-        <label>收件人邮箱 (多个用逗号分隔) [resend未认证域名用户只能发给自己的注册邮箱]</label>
-        <input type="text" id="recipients" placeholder="例: admin@company.com">
+        <label>收件人邮箱[resend未认证域名用户只能发给自己的注册邮箱]</label>
+        <input type="text" id="recipients" placeholder="例: admin@company.com,user@company.com">
       </div>
-      <button class="btn btn-outline btn-full" id="btnTestEmail" style="margin-top:8px;">📧 发送测试邮件</button>
+
     </div>
 
     <!-- 操作按钮 -->
     <div class="btn-row">
-      <button class="btn btn-primary btn-full" id="btnStart" style="flex:2;">▶ 开始监控</button>
+      <button class="btn btn-primary" id="btnStart" style="flex:2;">▶ 开始监控</button>
       <button class="btn btn-danger" id="btnStop" style="flex:1;">⏹ 停止</button>
-    </div>
-    <div class="btn-row" style="margin-top: 8px;">
-      <button class="btn btn-secondary btn-full" id="btnManual" style="flex:1;">🔄 手动执行一次</button>
-      <button class="btn btn-secondary" id="btnClear" style="flex:1;">🗑 清除记录</button>
+      <button class="btn btn-secondary" id="btnManual" style="flex:1;">🔄 手动执行</button>
+      <button class="btn btn-outline btn-full" id="btnTestEmail" style="flex:1;">📧 测试邮件</button>
     </div>
   </div>
   <div class="toast" id="toast"></div>

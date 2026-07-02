@@ -33,7 +33,7 @@
 
 设置一个基准时间，插件只会关注此时间之后产生的新条目。
 
-![screenshot](screenshots/popup.png)
+![screenshot](images/screenshots.png)
 
 ### 第三步：配置邮件通知（可选）
 
