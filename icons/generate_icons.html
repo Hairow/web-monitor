@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Generate Icons</title></head>
+<body>
+  <canvas id="c"></canvas>
+  <script>
+    const sizes = [16, 48, 128];
+    sizes.forEach(s => {
+      const canvas = document.createElement('canvas');
+      canvas.width = s; canvas.height = s;
+      const ctx = canvas.getContext('2d');
+      // 背景圆
+      ctx.fillStyle = '#1a73e8';
+      ctx.beginPath();
+      ctx.arc(s/2, s/2, s/2 - 1, 0, Math.PI*2);
+      ctx.fill();
+      // 文字
+      ctx.fillStyle = '#fff';
+      ctx.font = `bold ${s*0.5}px Arial`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('M', s/2, s/2);
+      // 下载
+      const a = document.createElement('a');
+      a.download = `icon${s}.png`;
+      a.href = canvas.toDataURL();
+      a.click();
+    });
+  </script>
+  <p>图标已自动下载，请将 icon16.png / icon48.png / icon128.png 放入 icons/ 目录</p>
+</body>
+</html>
